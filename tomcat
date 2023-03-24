@@ -1,3 +1,19 @@
+# login to the console
+# create an ec2 instance
+# login to the instance
+# then install commands below
+  yum install java -y
+# after this we have to move
+  cd /opt
+  wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.73/bin/apache-tomcat-9.0.73.tar.gz
+  tar -zxvf apache-tomcat-9.0.73.tar.gz
+  mv apache-tomcat-9.0.73.tar.gz tomcat
+  cd tomcat/bin/
+  # after that we will create a file like using below command
+   vi /etc/systemd/system/tomcat.service
+  # then add below data in this file
+
+
 [Unit]
 Description=Tomcat Web Application Container
 After=syslog.target network.target
@@ -22,3 +38,27 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
+# in the above file only we will change one path i.e java path
+to know that we will move cd /usr/lib/jvm/java-17-amazon-corretto.x86_64
+# after that we will create one user using below command
+useradd tomcat
+# we will give change ownership of that by using below command
+chown -R tomcat:tomcat /opt/tomcat
+# then we will move to tomcat path i.e cd /opt/tomcat/bin
+systemctl daemon-reload
+systemctl start tomcat.service
+systemctl enable tomcat.service
+systemctl status tomcat.service
+# to know the tomcat is running or not
+ps -ef | grep tomcat
+# then we will stop and start the server then automatically the server will be started because we enabled tomcat service
+
+http://publicip:8080
+
+
+
+
+
+
+
+

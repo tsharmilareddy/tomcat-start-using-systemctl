@@ -1,25 +1,14 @@
 # Create an ec2 instance
-# Install java and  tomcat by using below command
-# yum install java -y
-# wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.73/bin/apache-tomcat-9.0.73.tar.gz
+# Install java and  tomcat 
+# then open a file in this path /etc/systemd/system/tomcat.service
+
+# In this file copy data , we gave this date in tomcat file
+# In the file u have to change java path only for this u have to move /usr/lib/jvm/java-17-amazon-corretto.x86_64
 
 
+# Then add user and give permissions to that
 
-Then open a file 
-
-vi /etc/systemd/system/tomcat.service
-
-In this file copy data 
-       
-In the file u have to change java path like cd /usr/lib/jvm   then we will 
-
-get path , that java file name we can pass above
-
-Then add useradd tomcat
-
-chown -R tomcat:tomcat /opt/tomcat
-
-Then move to tomcat bin path
+# then we will move tomcat bin path then will enter below commands
 
 systemctl daemon-reload
 
